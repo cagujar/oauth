@@ -2,9 +2,9 @@
 
 ## Environment
 - [ ] Part 1: Setting up NodeJS environment
-- [ ] Part 2: 
-- [ ] Part 3:
-- [ ] Part 4:
+- [ ] Part 2: Authentication Routes
+- [ ] Part 3: Passport Configuration
+- [ ] Part 4: PostgreSQL Store and Retrieve
 
 ## User Activity
 - [ ] Part 5: Progress Refresh
