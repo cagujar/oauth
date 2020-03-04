@@ -32,3 +32,8 @@ module.exports = {
     }
 };
 ```
+
+### Sources
+* [PassportJS](http://www.passportjs.org/)
+* [DeveloperHandbook](https://developerhandbook.com/passport.js/how-to-add-passportjs-google-oauth-strategy/)
+* [The Net Ninja](https://www.youtube.com/watch?v=BZwzWgLA0JA&list=PL4cUxeGkcC9jdm7QX143aMLAqyM-jTZ2x&index=13)
