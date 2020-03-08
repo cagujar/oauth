@@ -1,39 +1,30 @@
 # OAuth Demo by Clyde Balaman
 
-## Environment
-- [ ] Part 1: Setting up NodeJS environment
-- [ ] Part 2: Authentication Routes
-- [ ] Part 3: Passport Configuration
-- [ ] Part 4: PostgreSQL Store and Retrieve
-
-## User Activity
-- [ ] Part 5: Progress Refresh
-- [ ] Part 6: Cookie Session
-- [ ] Part 7: Viewing Profile
-- [ ] Part 8: User Logout
-
-### Code Snippets
-
-```config/keys.js```
-```js
-// add this file to .gitignore
-module.exports = {
-    google:{
-        clientID: '<YOUR_CLIENTID_HERE>',
-        clientSecret: '<YOUR_CLIENTSECRET_HERE>'
-    },
-    postgresdb:{
-        user: '<YOUR_USERNAME_HERE>', 
-        host: '<YOUR_HOST_HERE>',
-        database: '<YOUR_DATABASE_HERE>', 
-        password: '<YOUR_PASSWORD_HERE>', 
-        port:'<YOUR_PORT_HERE>',
-        ssl:true,
-    }
-};
+## Part 1: Setting up NodeJS environment
+```bash
+> npm init -y
+> npm install express ejs
+> npm install nodemon -g
+> nodemon index.js
 ```
 
-### Sources
-* [PassportJS](http://www.passportjs.org/)
-* [DeveloperHandbook](https://developerhandbook.com/passport.js/how-to-add-passportjs-google-oauth-strategy/)
-* [The Net Ninja](https://www.youtube.com/watch?v=BZwzWgLA0JA&list=PL4cUxeGkcC9jdm7QX143aMLAqyM-jTZ2x&index=13)
+## Part 2: Setting up Authentication Routes
+* localhost:3000/auth/login
+* localhost:3000/auth/logout
+* localhost:3000/auth/google
+
+## Part 3: Setting up Passport
+```bash
+> npm install passport passport-google-oauth20
+> type nul > passport-setup.js
+# Create new project 'Lastname2020' - https://console.developers.google.com/
+# Navigate to Getting Started > Enable APIs and Services. Look for Google+ API then Enable and Create Credentials. See troubleshooting guide for some guidance.
+# Which API are you using? Google+ API
+# Key: AIzaSyCBuJqhFdLoYXeK3MHfWmrfoJAdAE_Onrw
+# Client ID: 150322459579-bgldudsea3rfokitrcphot3mbrupiov7.apps.googleusercontent.com
+# Client Secret: C74lVpQQa1oID8luyEIXsAO8
+> nodemon index.js
+```
+
+### Troubleshooting Guide/Issues
+* [Passport Google OAuth Strategy](https://developerhandbook.com/passport.js/how-to-add-passportjs-google-oauth-strategy/)
