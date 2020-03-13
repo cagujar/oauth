@@ -1,9 +1,9 @@
-# OAuth Demo by Chrissa Mae Agujar
+2w# OAuth Demo by Chrissa Mae Agujar
 
 ## Environment
-- [ ] Part 1: Setting up NodeJS environment
-- [ ] Part 2: Authentication Routes
-- [ ] Part 3: Passport Configuration
+- [X] Part 1: Setting up NodeJS environment
+- [X] Part 2: Authentication Routes
+- [X] Part 3: Passport Configuration
 - [ ] Part 4: PostgreSQL Store and Retrieve
 
 ## User Activity
