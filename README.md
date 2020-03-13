@@ -1,4 +1,4 @@
-2w# OAuth Demo by Chrissa Mae Agujar
+# OAuth Demo by Chrissa Mae Agujar
 
 ## Environment
 - [X] Part 1: Setting up NodeJS environment
