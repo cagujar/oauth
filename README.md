@@ -4,13 +4,13 @@
 - [X] Part 1: Setting up NodeJS environment
 - [X] Part 2: Authentication Routes
 - [X] Part 3: Passport Configuration
-- [ ] Part 4: PostgreSQL Store and Retrieve
+- [X] Part 4: PostgreSQL Store and Retrieve
 
 ## User Activity
-- [ ] Part 5: Progress Refresh
-- [ ] Part 6: Cookie Session
-- [ ] Part 7: Viewing Profile
-- [ ] Part 8: User Logout
+- [X] Part 5: Progress Refresh
+- [X] Part 6: Cookie Session
+- [X] Part 7: Viewing Profile
+- [X] Part 8: User Logout
 
 ### Code Snippets
 
