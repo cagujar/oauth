@@ -23,7 +23,7 @@ p{
     color: white;
 }
 
-button{
+.btn.btn-warning{
     margin-left: 50%;
 
 }
@@ -36,7 +36,7 @@ section{
     width: 100%;
 }
 
-section .wave{
+.wave{
     position: absolute;
     bottom: 0;
     width: 100%;
@@ -46,7 +46,7 @@ section .wave{
     
 }
 
-section .wave.wave1 {
+.wave.wave1 {
     animation: animate 30s linear infinite;
     z-index: 1000;
     opacity: 1;
@@ -78,6 +78,56 @@ section .wave.wave4 {
     bottom: 20px;
 }
 
+.form
+{
+    width: 360px;
+    height: 370px;
+    background-color: white;
+    margin: 50px auto 100px;
+    position: relative;
+    z-index: 1;
+    padding: 45px;
+
+}
+
+input
+{
+    font-family: "Roboto";
+    outline: 1;
+    margin: 0 0 15px;
+    font-size: 14px;
+    width: 270px;
+    height: 40px;
+    border: 0;
+    padding: 15px;
+    box-sizing: border-box;
+    background-color: #f2f2f2;
+}
+
+.login
+{
+    font-family: "Roboto";
+    outline: 0;
+    background: pink;
+    width: 270px;
+    height: 40px;
+    cursor: pointer;
+    padding: 10px;
+    border: 0;
+    font-size: 14px;
+}
+
+.login.button3
+{
+   
+}
+
+.or
+{
+    font-family: "Roboto";
+    font-size: 14px;
+    margin: 30px 0 30px 0;
+}
 @keyframes animate
 {
     0%

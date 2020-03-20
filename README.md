@@ -39,7 +39,7 @@
 ```
 
 OAuth Exercises
-- [ ] OAuth_Ex1: Add styles to `homepage` and `login` pages. You may use any css frameworks (e.g. bootstrap, materialize, or foundation)
+- [X] OAuth_Ex1: Add styles to `homepage` and `login` pages. You may use any css frameworks (e.g. bootstrap, materialize, or foundation)
 - [ ] OAuth_Ex2: Add animations (loading) and transitions (fade in, fade out) to the same pages. You may use our previous animation exercises (e.g. 4-circle loading animation)
 - [ ] OAuth_E3: Consider to create a PostgreSQL function or procedure to replace the codes in `passport-setup.js` particularly line numbers 17-36.
 

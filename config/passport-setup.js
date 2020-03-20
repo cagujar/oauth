@@ -3,6 +3,50 @@ const GoogleStrategy = require('passport-google-oauth20');
 const keys = require('./keys');
 const User = require('../models/user-model');
 
+
+/*
+- The user id (you provide as the second argument of the done function) is saved in the session and is later used to retrieve the whole object via the deserializeUser function.
+- SerializeUser determines which data of the user object should be stored in the session. The result of the serializeUser method is attached to the session as req.session.passport.user = {}.
+*/
+passport.serializeUser((user, done)=>{
+    done(null, user.id); // A piece of info and save it to cookies
+});
+
+/*
+- The first argument of deserializeUser corresponds to the key of the user object that was given to the done function (see serializeUser.). 
+- So your whole object is retrieved with help of that key. That key here is the user id (key can be any key of the user object i.e. name,email etc). 
+- In deserializeUser that key is matched with the in memory array / database or any data resource.
+*/
+passport.deserializeUser((id, done)=>{
+    //Who's id is this?
+    User.query(`SELECT "oauth".findById(${id})`,(err,res)=>{
+        if(err){
+            console.log(err);
+        }else{
+            console.log(res.rows[0]);
+            done(null, user); 
+        }        
+    });
+});
+
+
+
+User.query(`CALL "oauth".insert_when_unique(${profile.id},
+    '${profile.displayName}',
+    '${profile.photos[0].value}');`,
+(err,res)=>{
+
+if(err){
+//already have the user
+}
+else{
+//if not, new user was created in our db
+}
+
+});
+
+
+/*
 passport.use(
     new GoogleStrategy({
         // options for the google strat
@@ -40,3 +84,5 @@ passport.use(
 
     })
 );
+
+*/
