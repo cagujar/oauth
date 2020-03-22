@@ -7,7 +7,11 @@ const cookieSession = require("cookie-session");
 const keys = require('./config/keys');
 
 const app = express();
+
 app.use(passport.initialize());
+
+// create page assets
+app.use(express.static('public'));
 
 // set up view engine
 app.set('view engine', 'ejs');
