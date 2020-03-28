@@ -1,5 +1,7 @@
 const passport = require('passport');
 const GoogleStrategy = require('passport-google-oauth20');
+const FacebookStrategy = require('passport-facebook');
+const GitHubStrategy = require('passport-github').Strategy;
 const keys = require('./keys');
 const User = require('../models/user-model');
 
@@ -20,40 +22,17 @@ passport.deserializeUser((id, done)=>{
     });
 });
 
+
+//GOOGLE PASSPORT
 passport.use(
     new GoogleStrategy({
         // options for the google strat
-        callbackURL: '/auth/google/callback',
+        callbackURL: '/auth/google/redirect',
         clientID: keys.google.clientID,
         clientSecret: keys.google.clientSecret
-    }, (accessToken, refreshToken, profile, done)=>{
-        // check if user already exists in our database
-        console.log('##########################');
-        console.log(profile);
-        
-        // const sql1 = `select count(*) as result from "oauth".user where id=${profile.id}`;
-        // User.query(sql1,(err,res)=>{
-        //     console.log(`>>>>>>>>>>>>>> res = ${JSON.stringify(res)}`)
-        //     console.log(`>>>>>>>>>>>>>> result = ${res.rows[0].result}`)
-        //     if(res.rows[0].result==0 && res.rows[0].result!=undefined){
-        //         const sql2 = `INSERT INTO "oauth".user 
-        //         VALUES( ${profile.id},
-        //                 '${profile.displayName}',
-        //                 ${profile.photos[0].value})`;
-        //         User.query(sql2,(err1, res1)=>{
-        //             if(err1) User.end();
-        //             console.log("##############");
-        //             console.log("User has been successfully inserted!");
-        //             console.log(sql2);
-        //             User.end();
-        //         });
-        //         console.log("User inserted!");
-        //     }else{
-        //         console.log("User has been already inserted!");
-        //     }            
-        // });
-
-        User.query(`CALL "oauth".insert_when_unique(${profile.id},
+    }, (accessToken, refreshToken, profile, done)=> {
+    
+        User.query(`CALL "oauth".insertUnique(${profile.id},
                                                     '${profile.displayName}',
                                                     '${profile.photos[0].value}');`,
                     (err,res)=>{
@@ -80,5 +59,81 @@ passport.use(
                     });
 
 
-    })
-);
+}));
+
+
+//FACEBOOK PASSPORT
+passport.use(
+    new FacebookStrategy(
+    {
+        clientID: keys.facebook.clientID,
+        clientSecret: keys.facebook.clientSecret,
+        callbackURL: "/auth/facebook/redirect",
+        profileFields: ['id', 'displayName', 'name', 'gender', 'photos']
+    },
+   (accessToken, refreshToken, profile, cb) => 
+   {   
+
+        User.query(
+            `CALL "oauth".insertUnique('${profile.id}', '${profile.displayName}', '${profile.photos[0].value}')`,
+            (err,res)=>
+            {
+                 const _user = 
+                 {
+                            id: profile.id,
+                            name: profile.displayName,                              
+                            picture: profile.photos[0].value
+                 };
+
+                if (err) 
+                {
+                     const currentUser = _user;
+                    cb(null, currentUser);
+                }
+                else
+                {
+                     const newUser = _user;
+                    cb(null, newUser);
+                }
+            }
+        );
+   }
+));
+
+
+//GITHUB PASSPORT
+passport.use(
+        new GitHubStrategy(
+        {
+            clientID: keys.github.clientID,
+            clientSecret: keys.github.clientSecret,
+            callbackURL: "/auth/github/redirect"
+        },
+        (accessToken, refreshToken, profile, cb) => 
+        {
+                 User.query(
+                `CALL "oauth".insertUnique('${profile.id}', '${profile.username}', '${profile.photos[0].value}')`,
+                (err,res)=>
+                {
+                     const _user = 
+                     {
+                                id: profile.id,
+                                name: profile.displayName,                              
+                                picture: profile.photos[0].value
+                     };
+
+                    if (err) 
+                    {
+                         const currentUser = _user;
+                        cb(null, currentUser);
+                    }
+                    else
+                    {
+                         const newUser = _user;
+                        cb(null, newUser);
+                    }
+                }
+            );
+        }
+    )
+    );
