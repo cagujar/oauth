@@ -1,0 +1,35 @@
+@import url('https://fonts.googleapis.com/css?family=Pacifico|Roboto&display=swap');
+
+.preload{
+    position: relative;
+}
+.preloadtext{
+    color: black;
+    font-family: 'Pacifico', cursive;
+    font-size: 100px;
+    position: absolute;
+    transform: translate(-50% -50%);
+}
+
+.preloadtext:nth-child(1)
+{
+    color: transparent;
+    -webkit-text-stroke: #3498db;
+}
+
+.preloadtext:nth-child(2)
+{
+    color: #3498db;
+    animation: load 8s ease-in-out infinite;
+}
+
+@keyframes load{
+    0%,100%
+    {
+        clip-path: polygon(0 60%,14% 62%,29% 60%,41% 58%,50% 55%,60% 53%,69% 50%,76% 47%,84% 44%,92% 41%,98% 35%, 100% 98%,2% 99%);
+
+    }
+    50%{
+        clip-path: polygon(0 56%,13% 65%, 29% 70%,43% 66%,56% 63%,64% 54%,72% 51%,76% 47%,86% 45%,92% 40%,100% 98%,2% 99%);
+    }
+}
